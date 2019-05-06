@@ -64,9 +64,15 @@ def find_key(key_list, key_word):
 
 def convert_dat(rsc_struct):
 	keys = list(rsc_struct.keys())
-	dat = rsc_struct[find_key(keys, '1')]
-	dat += rsc_struct[find_key(keys, '2')]
-	dat += rsc_struct[find_key(keys, '3')]
+	num = 1
+	dat = b''
+	while True:
+            k = find_key(keys, str(num))
+            if k != None:
+                dat += rsc_struct[k]
+            else:
+                break
+            num += 1
 	return dat
 
 if __name__ == '__main__':
